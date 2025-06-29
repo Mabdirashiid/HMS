@@ -10,17 +10,13 @@ await connectDB();
 
 const app = express();
 
-
-
 const corsOptions = {
-  origin: 'http://localhost:5174',
+  origin: ['http://localhost:5173', 'http://localhost:5174'],
   credentials: true,
 };
 
 app.options('*', cors(corsOptions)); // for preflight
 app.use(cors(corsOptions));          // for all requests
-
-
 
 app.use(express.json());
 
@@ -29,8 +25,11 @@ app.use((req, res, next) => {
     console.log('🔍 Origin:', req.headers.origin);
     next();
   });
-  
 
+// Root route for testing
+app.get('/', (req, res) => {
+  res.json({ message: 'HMS Backend API is running!' });
+});
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
