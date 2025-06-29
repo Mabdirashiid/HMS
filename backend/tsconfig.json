@@ -10,8 +10,7 @@
     "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true,
-    "noEmitHelpers": true
+    "skipLibCheck": true
   },
   "include": ["./"]
 }
